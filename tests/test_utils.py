@@ -5,7 +5,7 @@ from json import JSONDecodeError
 
 @pytest.fixture()
 def user_name_list():
-    posts = get_posts_all(path_data)
+    posts = get_posts_all()
     user_name_list = []
     for post in posts:
         user_name_list.append(post['poster_name'])
@@ -14,7 +14,7 @@ def user_name_list():
 
 @pytest.fixture()
 def post_id_list():
-    posts = get_posts_all(path_data)
+    posts = get_posts_all()
     post_id_list = []
     for post in posts:
         post_id_list.append(post['pk'])
@@ -33,7 +33,7 @@ def test_get_posts_all_file_error():
 def test_get_posts_all_json_error():
     try:
         with pytest.raises(JSONDecodeError):
-            get_posts_all(path_data)
+            get_posts_all()
     except:
         assert True
 
@@ -41,7 +41,7 @@ def test_get_posts_all_json_error():
 def test_get_comments_all_file_error():
     try:
         with pytest.raises(FileNotFoundError):
-            get_comments_all(path_comments)
+            get_comments_all()
     except:
         assert True
 
@@ -49,7 +49,7 @@ def test_get_comments_all_file_error():
 def test_get_comments_all_json_error():
     try:
         with pytest.raises(JSONDecodeError):
-            get_comments_all(path_comments)
+            get_comments_all()
     except:
         assert True
 
